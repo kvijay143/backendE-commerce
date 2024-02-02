@@ -1,7 +1,7 @@
 // Import the Express library
 const express = require('express');
 const cors = require("cors");
-const port = process.env.PORT || 5000;
+
 
 // Require the configuration file for the database
 require('./db/config');
@@ -20,7 +20,7 @@ const app = express();
 // Use JSON middleware to parse incoming JSON requests
 app.use(express.json());
 app.use(cors());
-
+const port = process.env.PORT || 5000;
 // Define a route to handle POST requests for creating a new user
 app.post("/user", async (req, resp) => {
     // Create a new User instance with the request body
