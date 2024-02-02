@@ -1,6 +1,7 @@
 // Import the Express library
 const express = require('express');
 const cors = require("cors");
+const port = process.env.PORT || 5000;
 
 // Require the configuration file for the database
 require('./db/config');
@@ -112,7 +113,7 @@ app.put("/product/:id",verifyToken,async(req,resp)=>{
     resp.send(result)
 });
 // Seacrh ApI for Product
-
+//defining a route for searching the product
 app.get("/search/:key",verifyToken,async(req,resp)=>{   // adding the middleware verifyToken in search API 
     let result=await Product.find({
         "$or":[
@@ -145,4 +146,4 @@ function verifyToken(req,resp,next){
 }
 
 // Start the server and listen on port 5000
-app.listen(5000);
+app.listen(port);
